@@ -9,11 +9,15 @@ interface SearchProp {
 const SearchBar: FC<SearchProp> = ({ onSubmit }) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
    
 
-    const inputValue: string = (form.elements.namedItem('searchInput') as HTMLInputElement)?.value;
+   
+    const form = e.target as HTMLFormElement
+   
+    const inputValue:string=(form.elements.namedItem('searchInput')as HTMLInputElement)?.value;
+    
     if (!inputValue) {
+      console.log(inputValue);
       return toast("Text must be entered to search for images!", {
         icon: "❌",
         style: {
@@ -29,7 +33,7 @@ const SearchBar: FC<SearchProp> = ({ onSubmit }) => {
     <header>
       <form onSubmit={handleSubmit}>
         <input
-          name="serchInput"
+          name="searchInput"
           type="text"
           autoComplete="off"
           autoFocus
